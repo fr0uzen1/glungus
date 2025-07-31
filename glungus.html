@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>glungus</title>
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Glungus">
+    <meta name="twitter:description" content="tap tap tap tap tap">
+    <meta name="twitter:image" content="https://i.postimg.cc/gJxw63QR/Glungus.webp">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://i.postimg.cc/gJxw63QR/Glungus.webp');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+        
+        #center-image {
+            width: 300px;
+            height: 300px;
+            cursor: pointer;
+        }
+        
+        .pulse {
+            animation: pulse 0.5s;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <img id="center-image" src="https://i.postimg.cc/gJxw63QR/Glungus.webp" alt="ТАПАЙ МЕНЯ СУКА!">
+    
+    <audio id="sound" src="https://codeskulptor-demos.commondatastorage.googleapis.com/pang/pop.mp3" preload="auto"></audio>
+    
+    <script>
+        const centerImage = document.getElementById('center-image');
+        const sound = document.getElementById('sound');
+        
+        centerImage.addEventListener('click', function() {
+            sound.currentTime = 0;
+            sound.play();
+
+            this.classList.add('pulse');
+            
+            setTimeout(() => {
+                this.classList.remove('pulse');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
